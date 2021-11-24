@@ -1,0 +1,61 @@
+$bgColor: #fafafa; // переменная
+
+//исключаем .first
+.block:not(.first) {
+  background: $bgColor; // используем переменную
+}
+
+// вложенность
+
+.block {
+    // стили
+    .someClass {
+      // стили пременятся ко всем someClass в классе block
+    }
+}
+
+
+
+// mixins
+
+@mixin name ($color: red,$fontWeight: 14px) { // объявление mixin, передаём параметры(color,fontWeight)
+  font-weight: $fontWeight;
+  font-size: 20px;
+  color: $color;
+}
+
+@mixin padding ($padd...) {
+  padding: $padd; // можно передавать множество параметров
+}
+
+.class {
+  @include padd(20px, 40px, 30px, 50px);
+  @include name; // подключение mixin
+}
+
+
+// псевдокласы
+
+a {
+  color: blue;
+  &:hover {
+    color: white;
+  }
+}
+
+@mixin link ($link, $hover, $active, $visited) {
+  color: $link;
+  &:hover {
+    color: $hover;
+  }
+  &:active {
+    color: $active;
+  }
+  &:visited {
+    color: $visited;
+  }
+}
+
+a {
+  @include link(#000, red, blue, green);
+}

@@ -1,0 +1,42 @@
+.main {
+  padding: 16px;
+  height: 100px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 16px;
+}
+
+.logoBig {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .logoSmal {
+    display: none;
+  }
+  .logoBig {
+    display: block;
+  }
+}
+.appBar {
+  max-width: 1200px;
+  margin: 0 auto;
+  @media (min-width: 500px) {
+    position: sticky !important;
+    top: 0px;
+  }
+}
+
+.toolBar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fakeToolBar {
+  @media (min-width: 500px) {
+    display: none !important;
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "extends": ["stylelint-config-prettier", "stylelint-config-recess-order"],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "order/order": [
+      "declarations",
+      {
+        "type": "at-rule",
+        "name": "media"
+      },
+      {
+        "type": "rule",
+        "selector": "^&::(before|after)"
+      },
+      {
+        "type": "rule",
+        "selector": "^&:\\w"
+      },
+      {
+        "type": "rule",
+        "selector": "^&_"
+      },
+      {
+        "type": "rule",
+        "selector": "^."
+      }
+    ],
+    "order/properties-order": [
+      "position",
+      "z-index",
+      "top",
+      "right",
+      "bottom",
+      "left",
+      "display",
+      "align-items",
+      "margin",
+      "padding",
+      "border",
+      "width",
+      "height",
+      "box-sizing",
+      "overflow",
+      "font-family",
+      "font-size",
+      "font-style",
+      "text-decoration",
+      "color",
+      "background-color"
+    ]
+  }
+}
