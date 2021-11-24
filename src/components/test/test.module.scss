@@ -1,0 +1,9 @@
+.warning {
+  background-color: rgb(240, 70, 70);
+}
+
+@media screen and (min-width: 900px) {
+  .warning {
+    background-color: rgb(12, 158, 12);
+  }
+}

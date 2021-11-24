@@ -1,0 +1,19 @@
+$DTBCol: rgba(99, 104, 107, 0.6);
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  // border-left: 1px solid #ece7e7;
+}
+
+.sideBar {
+  @media (max-width: 600px) {
+    padding-left: 0 !important;
+  }
+}

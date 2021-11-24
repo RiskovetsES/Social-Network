@@ -1,0 +1,21 @@
+.dialogs {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  width: 600px;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.dialogs__list {
+  margin: 0;
+  padding: 10px;
+  list-style: none;
+}
+
+.messages__list {
+  margin: 0;
+  padding: 10px;
+  margin-right: 50px;
+  list-style: none;
+}
