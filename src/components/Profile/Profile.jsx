@@ -2,23 +2,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import P from './Profile.module.css';
-import ProfileInfo from './ProfileInfo/ProfileInfo';
+import ProfileData from './ProfileInfo/ProfileData';
 import PostsContainer from './MyPosts/PostsContainer';
-
-function Profile(props) {
+import { savePhotoTC } from '../../redux/profileReducer';
+//todo: добавить загрузку своего профиля
+function Profile({...props}) {
   return (
     <div className={P.content}>
-      <ProfileInfo {...props} />
+      <ProfileData {...props}
+      />
       <PostsContainer />
     </div>
   );
 }
 
-Profile.propTypes = {
-  posts: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    post: PropTypes.string.isRequired,
-  })).isRequired,
-};
 
 export default Profile;

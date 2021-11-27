@@ -5,7 +5,6 @@ import { Redirect } from 'react-router';
 import { Field, reduxForm } from 'redux-form';
 import { loginTC, logoutTC } from '../../redux/authReducer';
 
-
 const LoginForm = ({ handleSubmit }) => (
   <form onSubmit={handleSubmit}>
     <div>
@@ -24,27 +23,27 @@ const LoginForm = ({ handleSubmit }) => (
   </form>
 );
 
-
 const LoginReduxForm = reduxForm({
   form: 'login',
 })(LoginForm);
 
 const Login = ({ loginTC, logoutTC, isAuth }) => {
-
   if (isAuth) {
-    return <Redirect to={'/profile'} />
+    return <Redirect to="/profile" />;
   }
   const onSubmit = (data) => {
     loginTC(data);
-  }
+  };
 
-  return <div>
-    <h1>Login</h1>
-    <LoginReduxForm onSubmit={onSubmit} />
-  </div >
-}
+  return (
+    <div>
+      <h1>Login</h1>
+      <LoginReduxForm onSubmit={onSubmit} />
+    </div>
+  );
+};
 
 const mapStateToProps = (state) => ({
-  isAuth: state.auth.isAuth
-})
+  isAuth: state.auth.isAuth,
+});
 export default connect(mapStateToProps, { loginTC, logoutTC })(Login);
