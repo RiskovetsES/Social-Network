@@ -4,36 +4,56 @@ const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const GET_USER_STATUS = 'GET_USER_STATUS';
+const SAVE_PHOTO = 'SAVE_PHOTO'
+const SAVE_PROFILE = 'SAVE_PROFILE'
 
-export const addPostActionCreator = (text) => ({
+export const addPostAC = (text) => ({
   type: ADD_POST,text
 });
-export const updateNewPostTextActionCreator = (text) => ({
+export const updateNewPostTextAC = (text) => ({
   type: 'UPDATE-NEW-POST-TEXT',
   text,
 });
-export const setUserProfile= (userProfile) => ({type: SET_USER_PROFILE, userProfile});
-export const setUserStatus= (status) => ({type: GET_USER_STATUS, status});
+export const setUserProfileAC = (userProfile) => ({type: SET_USER_PROFILE, userProfile});
+export const setUserStatusAC = (status) => ({type: GET_USER_STATUS, status});
+export const savePhotoAC = (photos) => ({type: SAVE_PHOTO, photos});
+export const saveProfileAC = (profile) => ({type: SAVE_PROFILE, profile});
 
 export const getProfileTC = (id) => {
   return async (dispatch) => {
    const resp = await API.getProfile(id);
-      dispatch(setUserProfile(resp));
+      dispatch(setUserProfileAC(resp));
   }
 }
 
 export const getUserStatusTC = (id) => {
   return async (dispatch) => {
-    const resp = await API.getStatus(id);
-      dispatch(setUserStatus(resp.data));
+    const { data } = await API.getStatus(id);
+      dispatch(setUserStatusAC(data));
   }
 }
 
 export const putUserStatusTC = (status) => async (dispatch) => {
-  const resp = await API.updateStatus(status);
-    if(resp.data.resultCode === 0) {
-      dispatch(setUserStatus(status));
+  const { data } = await API.updateStatus(status);
+    if(data.resultCode === 0) {
+      dispatch(setUserStatusAC(status));
     }
+}
+
+export const savePhotoTC = (file) => async (dispatch) => {
+  const { data } = await API.savePhoto(file);
+  if(data.resultCode === 0) {
+    dispatch(savePhotoAC(data.data.photos));
+  }
+}
+
+export const saveProfileTC = (profile) => async (dispatch, getState) => {
+  const userId = getState().auth.id;
+  const { data } = await API.saveProfile(profile);
+  debugger
+  if(data.resultCode === 0) {
+    dispatch(getProfileTC(userId));
+  }
 }
 
 const initialState = {
@@ -73,6 +93,13 @@ const profileReducer = (state = initialState, action) => {
           ...state,
           status: action.status,
         }
+    case SAVE_PHOTO:
+      return {
+        ...state,
+        profile: {...state.profile,
+        photos: action.photos,
+        }
+      }
     default:
       return state;
   }

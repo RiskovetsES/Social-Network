@@ -1,13 +1,15 @@
 /* eslint-disable */
 import React from 'react';
-import s from './Header.module.scss';
 import AppBar from '@mui/material/AppBar';
-import { Button, Container, IconButton, Toolbar, Typography } from '@mui/material';
+import {
+  Button, Container, IconButton, Toolbar, Typography,
+} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import LoginIcon from '@mui/icons-material/Login';
 import { StyledEngineProvider } from '@mui/material/styles';
 import { Box } from '@mui/system';
 import { NavLink } from 'react-router-dom';
+import s from './Header.module.scss';
 // export default function Header({ data }) {
 //   return (
 //     <header className={`${s.main} ${s.darkTheme}`}>
@@ -19,7 +21,6 @@ import { NavLink } from 'react-router-dom';
 
 //   );
 // }
-
 
 export default function Header({ isAuth, login, logoutTC }) {
   return (
@@ -42,9 +43,17 @@ export default function Header({ isAuth, login, logoutTC }) {
               <p className={s.logoSmal}>logo</p>
             </Typography>
             <div>
-              {isAuth ?
-                <div>{login} - <button onClick={logoutTC}>Log out</button></div>
-                : <NavLink to={'/login'}>Login</NavLink>}
+              {isAuth
+                ? (
+                  <div>
+                    {login}
+                    {' '}
+                    -
+                    {' '}
+                    <button onClick={logoutTC}>Log out</button>
+                  </div>
+                )
+                : <NavLink to="/login">Login</NavLink>}
             </div>
           </Toolbar>
 

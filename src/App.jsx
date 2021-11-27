@@ -2,7 +2,7 @@
 import { Container, Grid, Paper } from '@mui/material';
 import React,{ Suspense } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Route } from 'react-router-dom';
 import s from './App.module.scss';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
@@ -54,7 +54,7 @@ class App extends React.Component {
     if (!this.props.initialized) return <Preloader />
     return (
       <StyledEngineProvider>
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <HashRouter>
           <Container maxWidth='lg'>
             <HeaderContainer />
             <Grid container
@@ -82,7 +82,7 @@ class App extends React.Component {
               </Grid>
             </Grid>
           </Container>
-        </BrowserRouter >
+        </HashRouter >
       </StyledEngineProvider>
 
     );

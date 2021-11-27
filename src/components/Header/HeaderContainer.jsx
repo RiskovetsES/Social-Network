@@ -11,14 +11,12 @@ class HeaderC extends React.Component {
   }
 
   render() {
-    return <Header {...this.props} />
+    return <Header {...this.props} />;
   }
 }
-const mapStateToProps = ({ auth }) => {
-  return {
-    isAuth: auth.isAuth,
-    login: auth.login,
-  }
-}
+const mapStateToProps = ({ auth }) => ({
+  isAuth: auth.isAuth,
+  login: auth.login,
+});
 
 export default compose(connect(mapStateToProps, { authTC, logoutTC }))(HeaderC);
