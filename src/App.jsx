@@ -8,7 +8,7 @@ import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
 import Preloader from './components/preloader/Preloader';
 import SideBar from './components/SideBar/SideBar';
-import Counter from './components/test/test';
+import Counter from './components/different/test';
 import { initializeTC } from './redux/appReducer';
 import { StyledEngineProvider } from '@mui/material/styles';
 import { Box } from '@mui/system';
@@ -33,7 +33,7 @@ const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileCo
 //               <Route path="/dialogs" render={() => <DialogsContainer />} />
 //               <Route path="/users" render={() => <UsersContainer />} />
 //               <Route path="/login" render={() => <Login />} />
-//               <Route path="/test" render={() => <Counter />} />
+//               <Route path="/different" render={() => <Counter />} />
 //             </div>
 //           </div>
 //         </div>
